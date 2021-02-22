@@ -19,8 +19,8 @@ device_types:
     u_height: 1
     is_full_depth: False
 platforms:
-  - name: IOS-XE
-    slug: ios-xe
+  - name: cisco_ios
+    slug: cisco_ios
 device_roles:
   - name: Router
     color: ff0000

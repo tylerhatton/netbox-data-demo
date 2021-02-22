@@ -2,7 +2,7 @@
 netbox_data:
   name: "{{ inventory_hostname }}"
   device_type: "CSR1000v"
-  platform: "IOS-XE"
+  platform: "cisco_ios"
   site: "LAB01"
   rack: "LAB_RACK_01"
   status: "Active"

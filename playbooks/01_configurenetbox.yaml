@@ -95,7 +95,7 @@
         netbox_url: "{{ netbox_url }}"
         netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
         data:
-          address: "{{ hostvars[device].ansible_host }}"
+          address: "{{ hostvars[device].ansible_host }}/24"
           status: active
           assigned_object:
             name: "GigabitEthernet0"
@@ -109,7 +109,7 @@
       netbox_device:
         netbox_url: "{{ netbox_url }}"
         netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
-        data: "{{ hostvars[device].netbox_data | combine({'primary_ip4': hostvars[device].ansible_host }) }}"
+        data: "{{ hostvars[device].netbox_data | combine({'primary_ip4': hostvars[device].ansible_host + '/24' }) }}"
         state: "{{ state }}"
       loop: "{{ groups['routers'] }}"
       loop_control:
