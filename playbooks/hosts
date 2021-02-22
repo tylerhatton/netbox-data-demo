@@ -1,0 +1,18 @@
+[netbox]
+netbox-1 netbox_url=http://localhost:8080
+
+[routers:children]
+cisco_csr
+
+[cisco_csr]
+router-1 ansible_host=192.168.2.106
+router-2 ansible_host=192.168.2.107
+router-3 ansible_host=192.168.2.108
+
+[cisco_csr:vars]
+ansible_user=admin
+ansible_ssh_pass=cisco
+ansible_become_pass=cisco
+ansible_network_os=ios
+ansible_connection=network_cli
+ansible_become_method=enable

@@ -1,0 +1,27 @@
+---
+sites:
+  - name: "LAB01"
+    time_zone: "America/Chicago"
+    status: "active"
+    description: "Lab"
+    contact_name: "Tyler"
+    contact_email: "tyler.hatton@wwt.com"
+racks:
+  - name: "LAB_RACK_01"
+    site: "LAB01"
+manufacturers:
+  - name: "Cisco"
+device_types:
+  - model: "CSR1000v"
+    manufacturer: "Cisco"
+    slug: "csr1000v"
+    part_number: "csr1000v"
+    u_height: 1
+    is_full_depth: False
+platforms:
+  - name: IOS-XE
+    slug: ios-xe
+device_roles:
+  - name: Router
+    color: ff0000
+    vm_role: true

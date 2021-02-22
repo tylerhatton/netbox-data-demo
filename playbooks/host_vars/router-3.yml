@@ -1,0 +1,9 @@
+---
+netbox_data:
+  name: "{{ inventory_hostname }}"
+  device_type: "CSR1000v"
+  platform: "IOS-XE"
+  site: "LAB01"
+  rack: "LAB_RACK_01"
+  status: "Active"
+  device_role: "Router"

@@ -1,0 +1,5 @@
+---
+collections:
+  - name: netbox.netbox
+    version: 2.1.0
+    source: https://galaxy.ansible.com
