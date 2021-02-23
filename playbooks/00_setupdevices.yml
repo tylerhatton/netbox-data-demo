@@ -1,0 +1,30 @@
+---
+- name: configure router interfaces and routes
+  hosts: cisco_csr
+  connection: network_cli
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Configure Hostname and DNS
+      ios_system:
+        hostname: "{{ inventory_hostname_short }}"
+        name_servers: "{{ dns_servers }}"
+      notify: "save ios"
+    - name: Disable ip domain name to simplify cdp
+      ios_command:
+        commands:
+          - "no ip domain name"
+    - name: Configure Interfaces
+      ios_config:
+        parents: "{{ item.parents | default(omit) }}"
+        lines: "{{ item.lines | default(omit) }}"
+        after: "{{ item.after | default(omit) }}"
+      loop: "{{ interfaces }}"
+      notify: "save ios"
+
+  handlers:
+    - name: save ios
+      ios_command:
+        commands: "write mem"
+        timeout: 60
+      when: not ansible_check_mode

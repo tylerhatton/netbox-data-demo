@@ -7,3 +7,13 @@ netbox_data:
   rack: "LAB_RACK_01"
   status: "Active"
   device_role: "Router"
+
+interfaces:
+  - parents: interface GigabitEthernet2
+    lines:
+      - ip address 192.168.23.3 255.255.255.0
+      - cdp enable
+      - ip ospf network point-to-point
+      - ip ospf 1 area 0
+    after:
+      - no shutdown

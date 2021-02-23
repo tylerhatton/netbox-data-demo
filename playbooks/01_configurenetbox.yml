@@ -84,7 +84,7 @@
         data:
           name: "GigabitEthernet1"
           device: "{{ hostvars[device].inventory_hostname }}"
-          type: "Virtual"
+          type: "Other"
         state: "{{ state }}"
       loop: "{{ groups['routers'] }}"
       loop_control:

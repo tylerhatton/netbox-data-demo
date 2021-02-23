@@ -1,23 +1,10 @@
 [main]
 import_ips = true 
 import_prefixes = false
-import_cabling = "lldp"       # Valid options are ["lldp", "cdp", "config", false]
+import_cabling = "cdp"       # Valid options are ["lldp", "cdp", "config", false]
 import_intf_status = false     # If set as False, interface status will be ignore all together
 import_vlans = "config"         # Valid options are ["cli", "config", true, false]
-# excluded_platforms_cabling = ["cisco_asa"]
-
-# Directory where the configurations can be find, organized in Batfish format
 configs_directory= "configs"
-
-# [inventory]
-# # Limit the scope of the inventory to a subset of devices
-# # Accept any parameters supported by NetBox devices API
-# # filter = "site=nyc,role=router"
-# # filter = ""
-
-# # Define a list of supported platform, 
-# # if defined all devices without platform or with a different platforms will be removed from the inventory
-# supported_platforms = [ "cisco_ios" ]
 
 [netbox]
 # The information to connect to NetBox needs to be provided, either in the config file or as environment variables
@@ -36,8 +23,6 @@ address= "localhost"    # Alternative Env Variable : BATFISH_ADDRESS
 port_v1 = 9997
 port_v2 = 9996
 use_ssl = false
-# api_key = "XXXX"      # Alternative Env Variable : BATFISH_API_KEY
-# use_ssl = false
 
 [logs]
 # Define log level, currently the logs are printed on the screen
