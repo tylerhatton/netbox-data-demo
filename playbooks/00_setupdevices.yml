@@ -11,8 +11,8 @@
         name_servers: "{{ dns_servers }}"
       notify: "save ios"
     - name: Disable ip domain name to simplify cdp
-      ios_command:
-        commands:
+      ios_config:
+        lines:
           - "no ip domain name"
     - name: Configure Interfaces
       ios_config:
@@ -26,5 +26,4 @@
     - name: save ios
       ios_command:
         commands: "write mem"
-        timeout: 60
       when: not ansible_check_mode

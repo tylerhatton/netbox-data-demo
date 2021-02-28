@@ -10,7 +10,7 @@
     - name: Setup Sites
       netbox_site:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ site }}"
         state: "{{ state }}"
       loop: "{{ sites }}"
@@ -20,7 +20,7 @@
     - name: Setup Racks
       netbox_rack:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ rack }}"
         state: "{{ state }}"
       loop: "{{ racks }}"
@@ -30,7 +30,7 @@
     - name: Setup Manufacturers
       netbox_manufacturer:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ manufacturer }}"
         state: "{{ state }}"
       loop: "{{ manufacturers }}"
@@ -40,7 +40,7 @@
     - name: Setup Device Types
       netbox_device_type:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ device_type }}"
         state: "{{ state }}"
       loop: "{{ device_types }}"
@@ -50,7 +50,7 @@
     - name: Setup Platforms
       netbox_platform:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ platform }}"
         state: "{{ state }}"
       loop: "{{ platforms }}"
@@ -60,7 +60,7 @@
     - name: "Setup Device Roles"
       netbox_device_role:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ device_role }}"
         state: "{{ state }}"
       loop: "{{ device_roles }}"
@@ -70,7 +70,7 @@
     - name: Add Devices
       netbox_device:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ hostvars[device].netbox_data }}"
         state: "{{ state }}"
       loop: "{{ groups['routers'] }}"
@@ -80,7 +80,7 @@
     - name: Add Management Interfaces
       netbox_device_interface:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data:
           name: "GigabitEthernet1"
           device: "{{ hostvars[device].inventory_hostname }}"
@@ -93,7 +93,7 @@
     - name: Add IP Address to Management Interfaces
       netbox_ip_address:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data:
           address: "{{ hostvars[device].ansible_host }}/24"
           status: active
@@ -108,7 +108,7 @@
     - name: Add Management IP to Devices
       netbox_device:
         netbox_url: "{{ netbox_url }}"
-        netbox_token: "{{ lookup('env', 'NETBOX_API_KEY') }}"
+        netbox_token: "{{ netbox_api_key }}"
         data: "{{ hostvars[device].netbox_data | combine({'primary_ip4': hostvars[device].ansible_host + '/24' }) }}"
         state: "{{ state }}"
       loop: "{{ groups['routers'] }}"
